@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To do list</title>
+    <style>
+        h1{
+        color: white;
+        background-color: #843ab8;
+        padding: 5px
+        }
+
+        .container{
+        display: flex;
+        gap: 1rem;
+        }
+
+    </style>
+</head>
+<body>
+    <h1> My to-do list {{date}}</h1>
+    <div class="container">
+        <div class="form">
+            <form action="{{ url_for('home') }}" method="POST">
+                <input type="text" placeholder="Write your next task here" name="task">
+                <button type="submit">Ok</button>
+                {% for task in task_list: %}
+                <p>{{ task.text }} &nbsp&nbsp&nbsp <a href="{{ url_for('delete', task_id=task.id) }}">Delete</a> </p>
+                {% endfor %}
+            </form>
+        </div>
+    </div>
+</body>
+</html>
