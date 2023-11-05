@@ -16,7 +16,9 @@ Bootstrap(app)
 class Tasks(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     text = db.Column(db.String(250), nullable=False)
-
+    
+##with app.app_context():
+    ##db.create_all()
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
